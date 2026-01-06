@@ -15,6 +15,16 @@ Make a google form with the fields "magic" (short answer) and "payload" (paragra
 5) Change spreadsheet sharing so that anyone with a link can be a viewer  
 6) Take note of the spreadsheet ID, put in config file for backend  
 
+## Generating an RSA Keypair
+
+We use RSA keys to encrypt an AES key, which is used in turn to encrypt student submissions from the WebIDE to the formprocessor.  You can generate this keypair via:
+
+```
+openssl genrsa -out private-key.pem 4096
+openssl rsa -in private-key.pem -pubout -out public-key.pem
+```
+
+And paste the contents of the relevant file when requested in the config file.
 
 ## Configuring the Form Processor to Post Grades to your LMS
 
